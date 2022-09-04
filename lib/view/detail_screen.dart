@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DetailScreen extends StatefulWidget {
+class DetailScreen extends StatelessWidget {
   DetailScreen(
       {Key? key,
       required this.img,
@@ -14,11 +14,6 @@ class DetailScreen extends StatefulWidget {
   late String desc;
 
   @override
-  State<DetailScreen> createState() => _DetailScreen();
-}
-
-class _DetailScreen extends State<DetailScreen> {
-  @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -29,13 +24,13 @@ class _DetailScreen extends State<DetailScreen> {
             physics: const BouncingScrollPhysics(),
             children: [
               Hero(
-                tag: widget.img,
+                tag: img,
                 child: Container(
                   height: h * 0.5,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(widget.img), fit: BoxFit.cover),
+                        image: AssetImage(img), fit: BoxFit.cover),
                     borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(12),
                       bottomLeft: Radius.circular(12),
@@ -68,7 +63,7 @@ class _DetailScreen extends State<DetailScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.name,
+                      name,
                       style: const TextStyle(
                           color: Colors.black,
                           fontSize: 30,
@@ -76,7 +71,7 @@ class _DetailScreen extends State<DetailScreen> {
                           fontFamily: "Roboto-Regular"),
                     ),
                     Text(
-                      "Rp. ${widget.price}.000",
+                      "Rp. $price.000",
                       style: const TextStyle(
                           color: Colors.black,
                           fontSize: 30,
@@ -92,7 +87,7 @@ class _DetailScreen extends State<DetailScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Text(
-                  widget.desc,
+                  desc,
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                       color: Colors.black.withOpacity(0.8),

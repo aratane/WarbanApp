@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:warungbandung/view/splashScreen.dart';
+import 'package:warungbandung/view/splash_screen.dart';
 
 void main() => runApp(const MyApp());
 

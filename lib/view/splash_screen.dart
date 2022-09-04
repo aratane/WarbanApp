@@ -1,25 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:warungbandung/view/homeScreen.dart';
+import 'package:warungbandung/view/home_screen.dart';
 
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-
-  @override
-  void initState() {
-    super.initState();
-    Timer(const Duration(seconds: 3), ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const HomeScreen())));
-  }
-
-  @override
   Widget build(BuildContext context) {
+    Timer(const Duration(seconds: 3), ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>HomeScreen())));
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -53,5 +42,4 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-
 }

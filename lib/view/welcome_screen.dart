@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:warungbandung/view/homeScreen.dart';
+import 'package:warungbandung/view/home_screen.dart';
 
-class StaterPage extends StatefulWidget {
+class StaterPage extends StatelessWidget {
   const StaterPage({Key? key}) : super(key: key);
 
-  @override
-  State<StaterPage> createState() => _StaterPageState();
-}
-
-class _StaterPageState extends State<StaterPage> {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height;
@@ -75,7 +70,7 @@ class _StaterPageState extends State<StaterPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                            builder: (context) => HomeScreen()),
                       );
                     },
                     child: Container(

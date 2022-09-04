@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:warungbandung/constants/foodData.dart';
-import 'package:warungbandung/view/profileScreen.dart';
-import 'detailScreen.dart';
+import 'package:warungbandung/view/profile_screen.dart';
+import 'detail_screen.dart';
 import 'package:favorite_button/favorite_button.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreen();
-}
-
-class _HomeScreen extends State<HomeScreen> {
   final food = MyFood();
 
   @override
@@ -64,13 +59,13 @@ class _HomeScreen extends State<HomeScreen> {
                       ),
                       child: Center(
                           child: Text(
-                        food.food[index],
-                        style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 14,
-                            fontFamily: "Roboto-Regular",
-                            fontWeight: FontWeight.bold),
-                      )),
+                            food.food[index],
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 14,
+                                fontFamily: "Roboto-Regular",
+                                fontWeight: FontWeight.bold),
+                          )),
                     );
                   }),
             ),
@@ -156,7 +151,7 @@ class _HomeScreen extends State<HomeScreen> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(bottom: 8, left: 8),
+                                const EdgeInsets.only(bottom: 8, left: 8),
                                 child: Align(
                                   alignment: Alignment.bottomLeft,
                                   child: Text(
