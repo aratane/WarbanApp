@@ -1,3 +1,4 @@
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
@@ -22,7 +23,7 @@ class DetailPage extends StatelessWidget {
           children: [
             CustomAppBar(
               leftIcon: Icons.arrow_back,
-              rightIcon: Icons.favorite_outline,
+              rightIcon: Icons.shopping_cart,
               leftCallback: () => Navigator.pop(context),
             ),
             FoodImg(
@@ -35,7 +36,7 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: SizedBox(
-        width: 100,
+        width: 56,
         height: 56,
         child: RawMaterialButton(
           onPressed: () {},
@@ -46,24 +47,13 @@ class DetailPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Icon(
-                Icons.shopping_bag_outlined,
-                color: Colors.black,
-                size: 30,
+              FavoriteButton(
+                iconSize: 55,
+                iconDisabledColor: Colors.black,
+                valueChanged: (isFavorite) {
+                  print('Is Favorite : $isFavorite');
+                },
               ),
-              Container(
-                padding: const EdgeInsets.all(15),
-                decoration: const BoxDecoration(
-                    color: Colors.white, shape: BoxShape.circle),
-                child: Text(
-                  food.quantity!.toString(),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              )
             ],
           ),
         ),

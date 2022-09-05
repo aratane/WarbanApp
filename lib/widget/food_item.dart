@@ -61,20 +61,13 @@ class FoodItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      const Text(
-                        'RP. ',
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       Text(
-                        food.price.toString(),
+                        'RP ${food.price}.000',
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                      )
+                      ),
                     ],
                   )
                 ],

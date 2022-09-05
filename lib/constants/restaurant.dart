@@ -22,18 +22,18 @@ class Restaurant {
 
   static Restaurant generateRestaurant() {
     return Restaurant(
-        name: 'Restaurant',
+        name: 'Warung Bandung',
         waitTime: "20-30min",
         distance: '2.4km',
-        label: 'Restaurant',
+        label: 'Food Market',
         logoUrl: 'assets/images/warban.png',
-        desc: 'Orange Sandwiches is delicious',
-        score: 4.7,
+        desc: 'Kenyang perut belanja di Warban.',
+        score: 5.0,
         menu: {
-          'Recommend': Food.generateRecommendFoods(),
-          'Popular': Food.generatePopularFood()!,
-          'Noodles': [],
-          'Pizza': [],
+          'Rekomendasi': Food.generateRecommendFoods(),
+          'Populer': Food.generatePopularFood()!,
+          'Gorengan': [],
+          'Souvenir': [],
         });
   }
 }

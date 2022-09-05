@@ -21,7 +21,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackground,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: const Text(
+          'Warban App',
+          style: TextStyle(color: Colors.black, fontSize: 20),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfileScreen()),
+              );
+            },
+            icon: const Icon(
+              Icons.account_circle_outlined,
+              color: Colors.black,
+            ),
+            iconSize: 20,
+          ),
+        ],
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -79,17 +101,11 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const ProfileScreen()),
-          );
-        },
+        onPressed: () {},
         elevation: 2,
         backgroundColor: kPrimaryColor,
         child: const Icon(
-          Icons.account_circle_outlined,
+          Icons.shopping_cart,
           color: Colors.black,
           size: 30,
         ),

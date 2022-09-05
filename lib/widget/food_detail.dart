@@ -55,7 +55,7 @@ class FoodDetail extends StatelessWidget {
           Row(
             children: const [
               Text(
-                'Ingredienta',
+                'Bahan-bahan',
                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               )
             ],
@@ -66,7 +66,7 @@ class FoodDetail extends StatelessWidget {
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(0),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(40),
@@ -88,7 +88,7 @@ class FoodDetail extends StatelessWidget {
           Row(
             children: const [
               Text(
-                'About',
+                'Tentang',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
             ],

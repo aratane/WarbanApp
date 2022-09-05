@@ -30,20 +30,15 @@ class FoodQuantity extends StatelessWidget {
                   const SizedBox(
                     width: 15,
                   ),
-                  const Text(
-                    'RP. ',
-                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                  ),
                   Text(
-                    food!.price!.toString(),
-                    style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.bold),
+                    'RP ${food!.price}.000',
+                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                   ),
                 ]),
               ),
             ),
             Align(
-              alignment: const Alignment(0.1, 0),
+              alignment: const Alignment(0.2, 0),
               child: Container(
                 height: double.maxFinite,
                 width: 100,
