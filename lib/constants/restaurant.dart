@@ -26,7 +26,7 @@ class Restaurant {
         waitTime: "20-30min",
         distance: '2.4km',
         label: 'Restaurant',
-        logoUrl: 'assets/images/res_logo.png',
+        logoUrl: 'assets/images/warban.png',
         desc: 'Orange Sandwiches is delicious',
         score: 4.7,
         menu: {

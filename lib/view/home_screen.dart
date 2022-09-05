@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:warungbandung/view/profile_screen.dart';
 
 import '../constants/colors.dart';
 import '../constants/restaurant.dart';
@@ -83,7 +84,13 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ProfileScreen()),
+          );
+        },
         elevation: 2,
         backgroundColor: kPrimaryColor,
         child: const Icon(
