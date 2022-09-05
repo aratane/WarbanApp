@@ -25,7 +25,7 @@ class Food {
   static List<Food> generateRecommendFoods() {
     return [
       Food(
-        imgUrl: 'assets/images/dish1.png',
+        imgUrl: 'assets/images/kopi.jpg',
         desc: 'No1. in sales',
         name: 'Soba Soup',
         waitTIme: '50min',
@@ -45,7 +45,7 @@ class Food {
         highLight: true,
       ),
       Food(
-        imgUrl: 'assets/images/dish2.png',
+        imgUrl: 'assets/images/cimol.jpg',
         desc: 'No1. in sales',
         name: 'Sei Ua Samun Phrai',
         waitTIme: '50min',
@@ -65,7 +65,7 @@ class Food {
         highLight: false,
       ),
       Food(
-        imgUrl: 'assets/images/dish3.png',
+        imgUrl: 'assets/images/surabi.jpg',
         desc: 'No1. in sales',
         name: 'Ratatoullie Pasta',
         waitTIme: '50min',
@@ -90,7 +90,7 @@ class Food {
   static List<Food>? generatePopularFood() {
     return [
       Food(
-          imgUrl: 'assets/images/dish4.png',
+          imgUrl: 'assets/images/kopi.jpg',
           desc: 'Most Popular',
           name: 'Tomato Chicken',
           waitTIme: '50min',
@@ -109,7 +109,7 @@ class Food {
               'Tomato Chicken Curry (Tamatar Murgh) is an Indian chicken curry cooked with lots of fresh tomatoes and mild spices. It goes very well with Indian bread or steamed rice.',
           highLight: false),
       Food(
-          imgUrl: 'assets/images/dish1.png',
+          imgUrl: 'assets/images/cimol.jpg',
           desc: 'Most Popular',
           name: 'Soba Soup',
           waitTIme: '50min',
