@@ -1,177 +1,95 @@
 import 'package:flutter/material.dart';
-import 'package:warungbandung/constants/foodData.dart';
-import 'package:warungbandung/view/profile_screen.dart';
-import 'detail_screen.dart';
-import 'package:favorite_button/favorite_button.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+import '../constants/colors.dart';
+import '../constants/restaurant.dart';
+import '../widget/custom_appbar.dart';
+import '../widget/food_list.dart';
+import '../widget/restaurant_info.dart';
 
-  final food = MyFood();
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var selected = 0;
+  final pageController = PageController();
+  final restaurant = Restaurant.generateRestaurant();
+  @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        title: const Text(
-          'Warban Food App',
-          style: TextStyle(color: Colors.black, fontSize: 20),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ProfileScreen()));
-            },
-            icon: const Icon(
-              Icons.account_circle,
-              color: Colors.black,
-            ),
-            iconSize: 20,
+      backgroundColor: kBackground,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const CustomAppBar(
+            leftIcon: Icons.arrow_back,
+            rightIcon: Icons.search,
           ),
-        ],
-      ),
-      body: SafeArea(
-        child: ListView(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: 30),
-          children: [
-            SizedBox(
-              height: h * 0.08,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      width: 120,
-                      margin: const EdgeInsets.all(4.0),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(32),
-                        border: Border.all(
-                            color: Colors.grey.withOpacity(0.5), width: 1),
-                      ),
-                      child: Center(
-                          child: Text(
-                            food.food[index],
-                            style: const TextStyle(
-                                color: Colors.grey,
-                                fontSize: 14,
-                                fontFamily: "Roboto-Regular",
-                                fontWeight: FontWeight.bold),
-                          )),
-                    );
-                  }),
+          RestaurantInfo(),
+          FoodList(
+            selected: selected,
+            restaurant: restaurant,
+            callback: (int index) {
+              setState(() {
+                selected = index;
+              });
+              pageController.jumpToPage(index);
+            },
+          ),
+          Expanded(
+            child: FoodListView(
+              selected: selected,
+              callback: (int index) {
+                setState(() {
+                  selected = index;
+                });
+              },
+              pageController: pageController,
+              restaurant: restaurant,
             ),
-            SizedBox(
-              height: h * 0.03,
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                "Tersedia",
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.5),
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Roboto-Bold",
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            height: 60,
+            child: SmoothPageIndicator(
+              controller: pageController,
+              count: restaurant.menu.length,
+              effect: CustomizableEffect(
+                dotDecoration: DotDecoration(
+                  width: 8,
+                  height: 8,
+                  color: Colors.grey.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                activeDotDecoration: DotDecoration(
+                  width: 10,
+                  height: 10,
+                  color: kBackground,
+                  borderRadius: BorderRadius.circular(10),
+                  dotBorder: const DotBorder(
+                    color: kPrimaryColor,
+                    padding: 2,
+                    width: 2,
+                  ),
                 ),
               ),
+              onDotClicked: (index) => pageController.jumpToPage(index),
             ),
-            SizedBox(
-              height: h * 0.03,
-            ),
-            SizedBox(
-              height: h * 0.63,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: food.foodNames.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => DetailScreen(
-                                  img: food.foodImages[index],
-                                  name: food.foodNames[index],
-                                  price: food.foodPrice[index],
-                                  desc: food.foodDesc[index])),
-                        );
-                      },
-                      child: Hero(
-                        tag: food.foodImages[index],
-                        child: Container(
-                          width: 250,
-                          margin: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            image: DecorationImage(
-                                image: AssetImage(food.foodImages[index]),
-                                fit: BoxFit.cover,
-                                colorFilter: ColorFilter.mode(
-                                    Colors.black.withOpacity(0.5),
-                                    BlendMode.darken)),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: FavoriteButton(
-                                    iconSize: 55,
-                                    iconDisabledColor: Colors.white,
-                                    valueChanged: (isFavorite) {},
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: h * 0.35,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Text(
-                                    "Rp. ${food.foodPrice[index]}.000",
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 30,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Roboto-Bold"),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                const EdgeInsets.only(bottom: 8, left: 8),
-                                child: Align(
-                                  alignment: Alignment.bottomLeft,
-                                  child: Text(
-                                    food.foodNames[index],
-                                    style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Roboto-Regular"),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-            ),
-          ],
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        elevation: 2,
+        backgroundColor: kPrimaryColor,
+        child: const Icon(
+          Icons.shopping_bag_outlined,
+          color: Colors.black,
+          size: 30,
         ),
       ),
     );

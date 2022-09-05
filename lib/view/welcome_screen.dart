@@ -70,7 +70,7 @@ class StaterPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => HomeScreen()),
+                            builder: (context) => HomePage()),
                       );
                     },
                     child: Container(
