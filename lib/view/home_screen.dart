@@ -4,7 +4,6 @@ import 'package:warungbandung/view/profile_screen.dart';
 
 import '../constants/colors.dart';
 import '../constants/restaurant.dart';
-import '../widget/custom_appbar.dart';
 import '../widget/food_list.dart';
 import '../widget/restaurant_info.dart';
 
@@ -26,10 +25,6 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomAppBar(
-            leftIcon: Icons.arrow_back,
-            rightIcon: Icons.search,
-          ),
           RestaurantInfo(),
           FoodList(
             selected: selected,
@@ -94,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 2,
         backgroundColor: kPrimaryColor,
         child: const Icon(
-          Icons.shopping_bag_outlined,
+          Icons.account_circle_outlined,
           color: Colors.black,
           size: 30,
         ),

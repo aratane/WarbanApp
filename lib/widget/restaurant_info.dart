@@ -11,7 +11,7 @@ class RestaurantInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 40),
+      margin: const EdgeInsets.only(top: 5),
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(
         children: [
